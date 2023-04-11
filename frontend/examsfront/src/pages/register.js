@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const REGISTER_URL = '/register';
+const REGISTER_URL = 'http://54.221.175.103:4000/users/register';
 
 const Register = () => {
     const userRef = useRef();
@@ -53,22 +53,49 @@ const Register = () => {
             return;
         }
         try {
-            const response = await axios.post(REGISTER_URL,
-                JSON.stringify({ user, pwd }),
-                { 
-                    headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true
-                }
-            );
-            console.log(response?.data);
-            console.log(response?.accessToken);
-            console.log(JSON.stringify(response))
+            // const response = await axios.post(REGISTER_URL,
+            //     JSON.stringify({ user, pwd }),
+            //     { 
+            //         headers: { 'Content-Type': 'application/json' },
+            //         withCredentials: true
+            //     }
+            // );
+            // console.log(response?.data);
+            // console.log(response?.accessToken);
+            // console.log(JSON.stringify(response))
+            let headersList = {
+                "Accept": "*/*",
+                "Content-Type": "application/json" 
+               }
+               
+               let bodyContent = JSON.stringify({
+                 "firstname":"nana2",
+                 "lastname":"mensah2",
+                 "country":"Ghana2",
+                 "company":"IFMAP2",
+                 "username":"nana2",
+                 "password":"12342",
+                 "email":"nanamensah1140@gmail.com"
+               });
+               
+               let reqOptions = {
+                 url: REGISTER_URL,
+                 method: "POST",
+                 headers: headersList,
+                 data: bodyContent,
+               }
+               
+               let response = await axios.request(reqOptions);
+               console.log(response.data);
+
+
+
             setSuccess(true);
-            //clear state and controlled inputs
-            //need value attrib on inputs for this
-            setUser('');
-            setPwd('');
-            setMatchPwd('');
+            // //clear state and controlled inputs
+            // //need value attrib on inputs for this
+            // setUser('');
+            // setPwd('');
+            // setMatchPwd('');
         } catch (err) {
             if (!err?.response) {
                 setErrMsg('No Server Response');
