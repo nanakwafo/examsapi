@@ -1,7 +1,6 @@
+import Uploader from "../components/Uploader"
 function filmaker()
 {
-    return (<div
-    
-    ></div>)
+    return (<div><Uploader/></div>)
 }
 export default filmaker
