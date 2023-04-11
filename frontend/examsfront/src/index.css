@@ -131,7 +131,31 @@ body {
     color: white;
 }
 
-
+/*Film maker */
+.filmmaker{
+    display: flex;
+}
+.filmmaker_left{
+    color: #000;
+    background-color: #fff;
+    height: 100vh;
+    width: 50%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.filmmaker_right{
+    background-color: #000;
+    height: 100vh;
+    width: 50%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
 
 
