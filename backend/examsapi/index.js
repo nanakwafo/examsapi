@@ -7,8 +7,9 @@ const errors =require('./middlewares/errors');
 
 
 const unless = require('express-unless');
-const cors = require('cors');
+
 const app = express();
+const cors = require('cors');
 
 mongoose.Promise =global.Promise;
 mongoose.connect(dbConfig.db,{ 
@@ -34,9 +35,7 @@ app.use(
 
 
 app.use(express.json());
-app.use(cors({
-  origin: ['http://localhost:3000/']
-}));
+app.use(cors());
 app.use("/users",require("./routes/users.routes"))
 app.use("/videos",require("./routes/video.routes"))
 app.use("/category",require("./routes/category.routes"))
