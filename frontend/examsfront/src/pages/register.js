@@ -64,7 +64,6 @@ const Register = () => {
             // console.log(response?.accessToken);
             // console.log(JSON.stringify(response))
             let headersList = {
-                "Accept": "*/*",
                 "Content-Type": "application/json" 
                }
                
