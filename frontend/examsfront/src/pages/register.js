@@ -82,6 +82,7 @@ const Register = () => {
     }
 
     return (
+
         <>
             {success ? (
                 <section>
@@ -93,7 +94,7 @@ const Register = () => {
             ) : (
                 <section>
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                    <h1>Register</h1>
+                    <h1 className="registerName">Register</h1>
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="username">
                             Username:
@@ -166,18 +167,20 @@ const Register = () => {
                             Must match the first password input field.
                         </p>
 
-                        <button disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button>
+                        <button className="registerButton" disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button>
                     </form>
-                    <p>
+                    <p className="registerName">
                         Already registered?<br />
                         <span className="line">
                             {/*put router link here*/}
-                            <a href="/login">Sign In</a>
+                            <a  href="/login">Sign In</a>
                         </span>
                     </p>
                 </section>
             )}
+          
         </>
+        
     )
 }
 

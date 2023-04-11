@@ -68,7 +68,7 @@ const Login = () => {
             ) : (
                 <section>
                     <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                    <h1>Sign In</h1>
+                    <h1 className="registerName">Sign In</h1>
                     <form onSubmit={handleSubmit}>
                         <label htmlFor="username">Username:</label>
                         <input
@@ -91,7 +91,7 @@ const Login = () => {
                         />
                         <button>Sign In</button>
                     </form>
-                    <p>
+                    <p className="registerName">
                         Need an Account?<br />
                         <span className="line">
                             {/*put router link here*/}

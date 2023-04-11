@@ -1,29 +1,147 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities;  */
-body{
-  margin: 0px;
-}
-
-
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
+body{
+  margin: 0px;
+}
 html {
-    font-family: 'Nunito', sans-serif;
+   font-family: sans-serif;
     font-size: 22px;
     color: #fff;
 }
 
 body {
     min-height: 100vh;
-    background-color: dodgerblue;
+    
 }
+/*Home*/
+.HomeContainer{
+    color: #000;
+    display: flex;
+   
+}
+.HomeContainer_left{
+ background-color: #000;
+    height: 100vh;
+    width: 50%;
+    background: url(https://www.ifmacinema.com/_next/static/media/PosterCollage_Rotated_80_2000x1440.62622d5b624aab6ba1eaa503be40f42c.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.HomeContainer_left_Logo > img{
+    width: 200px;
+    height: 200px;
+}
+.HomeContainer_left_text {
+    color: #fff;
+    text-align: center;
+}
+.HomeContainer_left_button >input{
+    background-color: red;
+    color: #fff;
+    outline: none;
+    border-radius: 4px;
+    border: none;
+    font-weight: 600;
+    padding: 0.4em 10em;
+    font-size: 20px;
+    cursor: pointer;
+    font-family: var(--primary-font-family),sans-serif;
+    text-transform: capitalize;
+}
+
+.HomeContainer_right{
+    background-color: #fff;
+    min-height: 100vh;
+    width: 50%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.HomeContainer_right_button{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.HomeContainer_right_button >input{
+    background-color: #000;
+    color: #fff;
+    outline: none;
+    border-radius: 4px;
+    border: none;
+    font-weight: 600;
+    padding: 0.4em 10em;
+    font-size: 20px;
+    cursor: pointer;
+    font-family: var(--primary-font-family),sans-serif;
+    text-transform: capitalize;
+}
+.HomeContainer_right_Logo > img{
+    width: 200px;
+    height: 200px;
+}
+/*Film viewer*/
+.filmviewer{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+}
+.filmviewer_footer{
+    background-color: #000;
+    height: 30vh;
+    width: 100%;
+    background: url(https://www.ifmacinema.com/_next/static/media/PosterCollage_Rotated_80_2000x1440.62622d5b624aab6ba1eaa503be40f42c.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.AllVideos{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 2%;
+}
+.title{
+    display: flex;
+}
+.badge__label{
+    background-color: red;
+    padding: 1px 3px;
+    border-radius: 10px;
+}
+.registerButton{
+    background-color: red;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 .App {
   display: flex;
@@ -36,25 +154,25 @@ body {
 
 section {
     width: 100%;
-    max-width: 420px;
-    min-height: 400px;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     padding: 1rem;
-    background-color: rgba(0,0,0,0.4);
+    background-color:#fff;
+    align-items: center;
 }
 
 form {
     display: flex;
+    align-items: center;
     flex-direction: column;
-    justify-content: space-evenly;
-    flex-grow: 1;
+   
     padding-bottom: 1rem;
 }
 
 a, a:visited {
-    color: #fff;
+    color: #000;
 }
 
 input[type="text"],
@@ -70,6 +188,7 @@ textarea {
 label,
 button {
   margin-top: 1rem;
+  color: #000;
 }
 
 button {
@@ -119,4 +238,7 @@ button {
 
 .line {
     display: inline-block;
+}
+.registerName{
+    color:#000
 }
