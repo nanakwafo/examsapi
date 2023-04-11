@@ -35,7 +35,7 @@ app.use(
 
 app.use(express.json());
 app.use(cors({
-  origin: '*'
+  origin: ['http://localhost:3000/']
 }));
 app.use("/users",require("./routes/users.routes"))
 app.use("/videos",require("./routes/video.routes"))
