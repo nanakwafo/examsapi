@@ -1,4 +1,4 @@
-const Category  = require("../backend/models/category.model");
+const Category  = require("../models/category.model");
 
 
 async function create(params, callback) {
