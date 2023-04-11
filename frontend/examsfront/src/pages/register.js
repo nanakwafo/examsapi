@@ -53,28 +53,19 @@ const Register = () => {
             return;
         }
         try {
-            // const response = await axios.post(REGISTER_URL,
-            //     JSON.stringify({ user, pwd }),
-            //     { 
-            //         headers: { 'Content-Type': 'application/json' },
-            //         withCredentials: true
-            //     }
-            // );
-            // console.log(response?.data);
-            // console.log(response?.accessToken);
-            // console.log(JSON.stringify(response))
+         
             let headersList = {
                 "Content-Type": "application/json" 
                }
                
                let bodyContent = JSON.stringify({
-                 "firstname":"nana2",
-                 "lastname":"mensah2",
-                 "country":"Ghana2",
-                 "company":"IFMAP2",
-                 "username":"nana2",
-                 "password":"12342",
-                 "email":"nanamensah1140@gmail.com"
+                 "firstname":"nana3",
+                 "lastname":"mensah3",
+                 "country":"Ghana3",
+                 "company":"IFMAP3",
+                 "username":"nana3",
+                 "password":"12343",
+                 "email":"nanamensah11330@gmail.com"
                });
                
                let reqOptions = {
@@ -85,16 +76,20 @@ const Register = () => {
                }
                
                let response = await axios.request(reqOptions);
-               console.log(response.data);
+               console.log(response.status);
+               if(response.status === 200){
+                setSuccess(true);
+                //clear state and controlled inputs
+            //need value attrib on inputs for this
+                setUser('');
+                setPwd('');
+                setMatchPwd('');
+               }
 
 
 
-            setSuccess(true);
-            // //clear state and controlled inputs
-            // //need value attrib on inputs for this
-            // setUser('');
-            // setPwd('');
-            // setMatchPwd('');
+            
+            
         } catch (err) {
             if (!err?.response) {
                 setErrMsg('No Server Response');

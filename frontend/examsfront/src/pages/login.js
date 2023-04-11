@@ -1,11 +1,11 @@
-import { useRef, useState, useEffect, useContext } from 'react';
-import AuthContext from "../context/AuthProvider";
+import { useRef, useState, useEffect } from 'react';
+// import AuthContext from "../context/AuthProvider";
 
 import axios from 'axios';
-const LOGIN_URL = '/auth';
+const LOGIN_URL = 'http://54.221.175.103:4000/users/login';
 
 const Login = () => {
-    const { setAuth } = useContext(AuthContext);
+    // const { setAuth } = useContext(AuthContext);
     const userRef = useRef();
     const errRef = useRef();
 
@@ -26,21 +26,42 @@ const Login = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post(LOGIN_URL,
-                JSON.stringify({ user, pwd }),
-                {
-                    headers: { 'Content-Type': 'application/json' },
-                    withCredentials: true
-                }
-            );
-            console.log(JSON.stringify(response?.data));
-            //console.log(JSON.stringify(response));
-            const accessToken = response?.data?.accessToken;
-            const roles = response?.data?.roles;
-            setAuth({ user, pwd, roles, accessToken });
-            setUser('');
-            setPwd('');
-            setSuccess(true);
+            let headersList = {
+                "Content-Type": "application/json" 
+               }
+               
+               let bodyContent = JSON.stringify({
+                 "username":user,
+                 "password":pwd
+               });
+               
+               let reqOptions = {
+                 url: LOGIN_URL,
+                 method: "POST",
+                 headers: headersList,
+                 data: bodyContent,
+               }
+               
+               let response = await axios.request(reqOptions);
+               console.log(response.data.data)
+               if(response.status === 200){
+            
+                const accessToken = response?.data?.data?.token;
+                const email = response?.data?.data?.email;
+                const firstname = response?.data?.data?.firstname;
+                const id = response?.data?.data?.id;
+                localStorage.setItem("token", accessToken);
+                localStorage.setItem("email", email);
+                localStorage.setItem("firstname", firstname);
+                localStorage.setItem("id", id);
+            
+                setUser('');
+                setPwd('');
+                setSuccess(true);
+                window.location.href = '/filmmaker';
+               }
+           
+           
         } catch (err) {
             if (!err?.response) {
                 setErrMsg('No Server Response');

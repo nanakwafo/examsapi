@@ -25,8 +25,15 @@ const Uploader = () => {
   };
 
   const handleUpload = async (file) => {
+   
+
     uploadFile(file, config)
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.log(data)
+        console.log(data.key)//name
+        //get title
+    
+      })
       .catch((err) => console.error(err));
   };
 
@@ -35,6 +42,7 @@ const Uploader = () => {
       <div className="filmmaker_left">
         <div>React S3 File Upload</div>
         <input type="file" onChange={handleFileInput} />
+
         <button onClick={() => handleUpload(selectedFile)}>
           {" "}
           Upload to S3
