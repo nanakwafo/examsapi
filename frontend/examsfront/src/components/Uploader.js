@@ -19,19 +19,23 @@ const config = {
 
 const Uploader = () => {
   const [selectedFile, setSelectedFile] = useState(null);
+  const [title,setTitle] =useState(null);
 
+  function getTitle(e){
+    setTitle(e.target.value);
+  };
   const handleFileInput = (e) => {
     setSelectedFile(e.target.files[0]);
   };
 
   const handleUpload = async (file) => {
-   
+    
 
     uploadFile(file, config)
       .then((data) => {
         console.log(data)
         console.log(data.key)//name
-        //get title
+        console.log(title)//get title
     
       })
       .catch((err) => console.error(err));
@@ -40,6 +44,12 @@ const Uploader = () => {
   return (
     <div className="filmmaker">
       <div className="filmmaker_left">
+        <div>Title:</div>
+        <input type="text" onChange={getTitle} />
+        
+        <br/>
+        <br/>
+        <br/>
         <div>React S3 File Upload</div>
         <input type="file" onChange={handleFileInput} />
 
