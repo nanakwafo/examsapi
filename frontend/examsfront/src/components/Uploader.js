@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { uploadFile } from "react-s3";
 import { Buffer } from "buffer";
+import axios from "axios";
+import Swal from "sweetalert2";
 Buffer.from("anything", "base64");
 
 window.Buffer = window.Buffer || require("buffer").Buffer;
@@ -19,24 +21,85 @@ const config = {
 
 const Uploader = () => {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [title,setTitle] =useState(null);
-
-  function getTitle(e){
+  const [title, setTitle] = useState(null);
+  const [category, setCategory] = useState(null);
+  const [uservideos, setUserVideos] = useState([]);
+  const fetchvideos = async()=> {
+    let headersList = {
+      
+      "Authorization": `Basic ${sessionStorage.getItem("token")}`
+     }
+     
+     let reqOptions = {
+       url: "http://54.221.175.103:4000/videos/6435414bade0d675d1b7e027",
+       method: "GET",
+       headers: headersList,
+     }
+     
+     let response = await axios.request(reqOptions);
+     
+     setUserVideos(response.data.data);
+     
+  }
+  
+  useEffect(()=>{
+    
+  
+    fetchvideos();
+    
+  
+    
+  },[]);
+  function getTitle(e) {
     setTitle(e.target.value);
-  };
+  }
+  function getCategory(e) {
+    setCategory(e.target.value);
+  }
   const handleFileInput = (e) => {
     setSelectedFile(e.target.files[0]);
   };
-
   const handleUpload = async (file) => {
-    
-
     uploadFile(file, config)
-      .then((data) => {
-        console.log(data)
-        console.log(data.key)//name
-        console.log(title)//get title
-    
+      .then(async (data) => {
+        console.log(data);
+        console.log(data.key); //name
+        console.log(title); //get title
+        console.log(category); //get title
+
+        let headersList = {
+          Authorization: `Basic ${sessionStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        };
+
+        let bodyContent = JSON.stringify({
+          categoryId: category,
+          userId: sessionStorage.getItem("id"),
+          name: data.key,
+          title: title,
+        });
+
+        let reqOptions = {
+          url: "http://54.221.175.103:4000/videos/create",
+          method: "POST",
+          headers: headersList,
+          data: bodyContent,
+        };
+
+        let response = await axios.request(reqOptions);
+        console.log(response.data);
+        if (response.status === 200) {
+          Swal.fire({
+            position: "top",
+            icon: "success",
+            title: "Video has been uploaded",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          setTimeout(function(){
+            window.location.reload();
+         }, 3000);
+        }
       })
       .catch((err) => console.error(err));
   };
@@ -44,48 +107,47 @@ const Uploader = () => {
   return (
     <div className="filmmaker">
       <div className="filmmaker_left">
+        <div>Category:</div>
+        <input type="text" onChange={getCategory} />
+
+        <br />
+        <br />
+        <br />
         <div>Title:</div>
         <input type="text" onChange={getTitle} />
-        
-        <br/>
-        <br/>
-        <br/>
-        <div>React S3 File Upload</div>
+
+        <br />
+        <br />
+        <br />
+        <div>File Upload</div>
         <input type="file" onChange={handleFileInput} />
 
-        <button onClick={() => handleUpload(selectedFile)}>
+        <button
+          className="videoupload"
+          onClick={() => handleUpload(selectedFile)}
+        >
           {" "}
-          Upload to S3
+          Upload Video
         </button>
       </div>
 
       <div className="filmmaker_right">
-      <div className="AllVideos">
-        <div className="video">
-          <video width="200px" height="300px" controls>
-            <source src="https://d2s3hb6ysmsfq9.cloudfront.net/Build%20a%20Video%20Streaming%20Service%20like%20YouTube,%20Netflix%20using%20AWS%20S3,%20CloudFront%20and%20React.mp4" />
-          </video>
-          <p className="title">Moviesa and films <span className="badge__label">Free</span></p>
+        <div className="ifmawelcome"> <span> You are welcome {sessionStorage.getItem('firstname')}</span></div>
+        <div className="AllVideos">
+          { 
+            uservideos.map((uservideo,index) =>
+              <div key={index} className="video">
+                <video width="200px" height="300px" controls>
+                  <source src={`https://d2s3hb6ysmsfq9.cloudfront.net/${uservideo.name}`} />
+                </video>
+                <p className="title">
+                {uservideo.title} <span className="badge__label">Free</span>
+                </p>
+              </div> 
+            )}
+        
+         
         </div>
-        <div className="video">
-          <video width="200px" height="300px"  controls>
-            <source src="https://d2s3hb6ysmsfq9.cloudfront.net/Build%20a%20Video%20Streaming%20Service%20like%20YouTube,%20Netflix%20using%20AWS%20S3,%20CloudFront%20and%20React.mp4" />
-          </video>
-          <p className="title">Moviesa and films <span className="badge__label">Free</span></p>
-        </div>
-        <div className="video">
-          <video width="200px" height="300px"  controls>
-            <source src="https://d2s3hb6ysmsfq9.cloudfront.net/Build%20a%20Video%20Streaming%20Service%20like%20YouTube,%20Netflix%20using%20AWS%20S3,%20CloudFront%20and%20React.mp4" />
-          </video>
-          <p className="title">Moviesa and films <span className="badge__label">Free</span></p>
-        </div>
-        <div className="video">
-          <video width="200px" height="300px"  controls>
-            <source src="https://d2s3hb6ysmsfq9.cloudfront.net/Build%20a%20Video%20Streaming%20Service%20like%20YouTube,%20Netflix%20using%20AWS%20S3,%20CloudFront%20and%20React.mp4" />
-          </video>
-          <p className="title">Moviesa and films <span className="badge__label">Free</span></p>
-        </div>
-      </div>
       </div>
     </div>
   );

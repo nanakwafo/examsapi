@@ -114,12 +114,18 @@ body {
     justify-content: center;
 }
 .AllVideos{
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-gap: 2%;
+    display: flex;
+    flex-flow: wrap;
+    justify-content: flex-start;
+    padding: 2%;
+}
+.video{
+    padding: 2%;
+    border: solid 2px;
 }
 .title{
     display: flex;
+   
 }
 .badge__label{
     background-color: red;
@@ -150,11 +156,20 @@ body {
     background-color: #000;
     height: 100vh;
     width: 50%;
-    position: relative;
+    /* position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: center; */
+}
+.videoupload{
+    background-color: red;
+    color: #fff;
+}
+.ifmawelcome{
+    display: flex;
+    color: #fff;
+    
 }
 
 

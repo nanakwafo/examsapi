@@ -50,10 +50,10 @@ const Login = () => {
                 const email = response?.data?.data?.email;
                 const firstname = response?.data?.data?.firstname;
                 const id = response?.data?.data?.id;
-                localStorage.setItem("token", accessToken);
-                localStorage.setItem("email", email);
-                localStorage.setItem("firstname", firstname);
-                localStorage.setItem("id", id);
+                sessionStorage.setItem("token", accessToken);
+                sessionStorage.setItem("email", email);
+                sessionStorage.setItem("firstname", firstname);
+                sessionStorage.setItem("id", id);
             
                 setUser('');
                 setPwd('');
