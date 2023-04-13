@@ -18,6 +18,13 @@ async  function allvideos(req,callback){
     return callback(error);
   });
 }
+async  function allifmavideos(req,callback){
+  Video.find({}).then((response) => {
+    return callback(null, response);
+  }).catch((error) => {
+    return callback(error);
+  });
+}
 
 async  function updatevideo(req,callback){
   Video.findByIdAndUpdate(req.params.id,req.body).then((response) => {

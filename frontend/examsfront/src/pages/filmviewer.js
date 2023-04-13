@@ -1,3 +1,41 @@
+import React, { useState, useEffect } from "react";
+
+const [allvideos, setVideos] = useState([]);
+const fetchvideos = async () => {
+  let headersList = {
+    Authorization: `Basic ${sessionStorage.getItem("token")}`,
+  };
+
+  let reqOptions = {
+    url: "http://54.221.175.103:4000/videos/6435414bade0d675d1b7e027",
+    method: "GET",
+    headers: headersList,
+  };
+
+  // try {
+  //   let response = await axios.request(reqOptions);
+  //   setUserVideos(response.data.data);
+  // } catch (error) {
+  //   if (error.response.status === 403 || 401) {
+  //     this.Logout();
+  //   }
+  // }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function filmviewer() {
   return (
     <div className="filmviewer">

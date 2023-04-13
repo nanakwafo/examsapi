@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { uploadFile } from "react-s3";
 import { Buffer } from "buffer";
 import axios from "axios";
@@ -24,32 +24,34 @@ const Uploader = () => {
   const [title, setTitle] = useState(null);
   const [category, setCategory] = useState(null);
   const [uservideos, setUserVideos] = useState([]);
-  const fetchvideos = async()=> {
+  const fetchvideos = async () => {
     let headersList = {
-      
-      "Authorization": `Basic ${sessionStorage.getItem("token")}`
-     }
-     
-     let reqOptions = {
-       url: "http://54.221.175.103:4000/videos/6435414bade0d675d1b7e027",
-       method: "GET",
-       headers: headersList,
-     }
-     
-     let response = await axios.request(reqOptions);
-     
-     setUserVideos(response.data.data);
-     
-  }
-  
-  useEffect(()=>{
-    
-  
+      Authorization: `Basic ${sessionStorage.getItem("token")}`,
+    };
+
+    let reqOptions = {
+      url: "http://54.221.175.103:4000/videos/6435414bade0d675d1b7e027",
+      method: "GET",
+      headers: headersList,
+    };
+
+    try {
+      let response = await axios.request(reqOptions);
+      setUserVideos(response.data.data);
+    } catch (error) {
+      if (error.response.status === 403 || 401) {
+        this.Logout();
+      }
+    }
+  };
+  const Logout = () => {
+    sessionStorage.clear();
+    window.location.href = "/login";
+  };
+
+  useEffect(() => {
     fetchvideos();
-    
-  
-    
-  },[]);
+  }, []);
   function getTitle(e) {
     setTitle(e.target.value);
   }
@@ -96,9 +98,9 @@ const Uploader = () => {
             showConfirmButton: false,
             timer: 1500,
           });
-          setTimeout(function(){
+          setTimeout(function () {
             window.location.reload();
-         }, 3000);
+          }, 3000);
         }
       })
       .catch((err) => console.error(err));
@@ -132,21 +134,24 @@ const Uploader = () => {
       </div>
 
       <div className="filmmaker_right">
-        <div className="ifmawelcome"> <span> You are welcome {sessionStorage.getItem('firstname')}</span></div>
+        <div className="ifmawelcome">
+          {" "}
+          <span> You are welcome {sessionStorage.getItem("firstname")}</span>
+          <button onClick={Logout}>Logout</button>
+        </div>
         <div className="AllVideos">
-          { 
-            uservideos.map((uservideo,index) =>
-              <div key={index} className="video">
-                <video width="200px" height="300px" controls>
-                  <source src={`https://d2s3hb6ysmsfq9.cloudfront.net/${uservideo.name}`} />
-                </video>
-                <p className="title">
+          {uservideos.map((uservideo, index) => (
+            <div key={index} className="video">
+              <video width="200px" height="300px" controls>
+                <source
+                  src={`https://d2s3hb6ysmsfq9.cloudfront.net/${uservideo.name}`}
+                />
+              </video>
+              <p className="title">
                 {uservideo.title} <span className="badge__label">Free</span>
-                </p>
-              </div> 
-            )}
-        
-         
+              </p>
+            </div>
+          ))}
         </div>
       </div>
     </div>

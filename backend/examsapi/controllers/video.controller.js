@@ -25,6 +25,17 @@ exports.allvideos =(req,res,next)=>{
     });
 })
 };
+exports.allifmavideos =(req,res,next)=>{
+  videoService.allifmavideos(req,(error,result)=>{
+    if(error){
+      return next(error);
+    }
+    return res.status(200).send({
+     message: "Success",
+     data: result
+    });
+})
+};
 
 
 exports.updatevideo =(req,res,next)=>{
