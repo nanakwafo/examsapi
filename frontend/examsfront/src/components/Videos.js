@@ -10,7 +10,7 @@ const Videos = () => {
     };
 
     let reqOptions = {
-      url: "http://54.221.175.103:4000/videos",
+      url: `${process.env.REACT_APP_API_URL}/videos`,
       method: "GET",
       headers: headersList,
     };

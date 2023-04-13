@@ -9,7 +9,7 @@ import axios from "axios";
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const REGISTER_URL = "http://54.221.175.103:4000/users/register";
+const REGISTER_URL = `${process.env.REACT_APP_API_URL}/users/register`;
 
 const Register = () => {
   const userRef = useRef();

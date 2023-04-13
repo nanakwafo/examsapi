@@ -30,7 +30,7 @@ const Uploader = () => {
     };
 
     let reqOptions = {
-      url: `http://54.221.175.103:4000/videos/${sessionStorage.getItem("id")}`,
+      url: `${process.env.REACT_APP_API_URL}/videos/${sessionStorage.getItem("id")}`,
       method: "GET",
       headers: headersList,
     };
@@ -82,7 +82,7 @@ const Uploader = () => {
         });
 
         let reqOptions = {
-          url: "http://54.221.175.103:4000/videos/create",
+          url: `${process.env.REACT_APP_API_URL}/videos/create`,
           method: "POST",
           headers: headersList,
           data: bodyContent,

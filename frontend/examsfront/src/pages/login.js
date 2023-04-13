@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from "react";
 // import AuthContext from "../context/AuthProvider";
 
 import axios from "axios";
-const LOGIN_URL = "http://54.221.175.103:4000/users/login";
+const LOGIN_URL = `${process.env.REACT_APP_API_URL}/users/login`;
 
 const Login = () => {
   // const { setAuth } = useContext(AuthContext);
