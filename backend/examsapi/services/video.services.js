@@ -37,5 +37,6 @@ async  function updatevideo(req,callback){
 module.exports = {
   create,
   allvideos,
-  updatevideo
+  updatevideo,
+  allifmavideos
 };
