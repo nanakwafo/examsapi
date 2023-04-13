@@ -144,7 +144,7 @@ const Uploader = () => {
             <div key={index} className="video">
               <video width="200px" height="300px" controls>
                 <source
-                  src={`https://d2s3hb6ysmsfq9.cloudfront.net/${uservideo.name}`}
+                  src={`${process.env.REACT_APP_CLOUDFRONTURL}/${uservideo.name}`}
                 />
               </video>
               <p className="title">

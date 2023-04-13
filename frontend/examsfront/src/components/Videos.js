@@ -49,7 +49,7 @@ const Videos = () => {
           <div key={index} className="video">
             <video width="200px" height="300px" controls>
               <source
-                src={`https://d2s3hb6ysmsfq9.cloudfront.net/${video.name}`}
+                src={`${process.env.REACT_APP_CLOUDFRONTURL}/${video.name}`}
               />
             </video>
             <p className="title">
