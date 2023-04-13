@@ -12,8 +12,8 @@ function App() {
     <Routes>
       <Route element={<PrivateRoutes />}>
         <Route path="/filmmaker" element={<Filmmaker />} />
-        <Route path="/filmviewer" element={<Filmviewer />} />
       </Route>
+      <Route path="/filmviewer" element={<Filmviewer />} />
       <Route path="/home" element={<Home />} />
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />

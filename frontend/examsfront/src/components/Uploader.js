@@ -30,7 +30,7 @@ const Uploader = () => {
     };
 
     let reqOptions = {
-      url: "http://54.221.175.103:4000/videos/6435414bade0d675d1b7e027",
+      url: `http://54.221.175.103:4000/videos/${sessionStorage.getItem("id")}`,
       method: "GET",
       headers: headersList,
     };
@@ -40,18 +40,18 @@ const Uploader = () => {
       setUserVideos(response.data.data);
     } catch (error) {
       if (error.response.status === 403 || 401) {
-        this.Logout();
+        Logout();
       }
     }
   };
-  const Logout = () => {
+  function Logout() {
     sessionStorage.clear();
     window.location.href = "/login";
-  };
+  }
 
   useEffect(() => {
     fetchvideos();
-  }, []);
+  });
   function getTitle(e) {
     setTitle(e.target.value);
   }

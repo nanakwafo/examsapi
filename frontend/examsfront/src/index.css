@@ -1,224 +1,218 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-body{
+body {
   margin: 0px;
 }
 html {
-   font-family: sans-serif;
-    font-size: 22px;
-    color: #fff;
+  font-family: sans-serif;
+  font-size: 22px;
+  color: #fff;
 }
 
 body {
-    min-height: 100vh;
-    
+  min-height: 100vh;
 }
 /*Home*/
-.HomeContainer{
-    color: #000;
-    display: flex;
-   
+.HomeContainer {
+  color: #000;
+  display: flex;
 }
-.HomeContainer_left{
- background-color: #000;
-    height: 100vh;
-    width: 50%;
-    background: url(https://www.ifmacinema.com/_next/static/media/PosterCollage_Rotated_80_2000x1440.62622d5b624aab6ba1eaa503be40f42c.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
+.HomeContainer_left {
+  background-color: #000;
+  height: 100vh;
+  width: 50%;
+  background: url(https://www.ifmacinema.com/_next/static/media/PosterCollage_Rotated_80_2000x1440.62622d5b624aab6ba1eaa503be40f42c.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.HomeContainer_left_Logo > img{
-    width: 200px;
-    height: 200px;
+.HomeContainer_left_Logo > img {
+  width: 200px;
+  height: 200px;
 }
 .HomeContainer_left_text {
-    color: #fff;
-    text-align: center;
+  color: #fff;
+  text-align: center;
 }
-.HomeContainer_left_button >input{
-    background-color: red;
-    color: #fff;
-    outline: none;
-    border-radius: 4px;
-    border: none;
-    font-weight: 600;
-    padding: 0.4em 10em;
-    font-size: 20px;
-    cursor: pointer;
-    font-family: var(--primary-font-family),sans-serif;
-    text-transform: capitalize;
-}
-
-.HomeContainer_right{
-    background-color: #fff;
-    min-height: 100vh;
-    width: 50%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.HomeContainer_right_button{
-    display: flex;
-    justify-content: space-evenly;
+.HomeContainer_left_button > input {
+  background-color: red;
+  color: #fff;
+  outline: none;
+  border-radius: 4px;
+  border: none;
+  font-weight: 600;
+  padding: 0.4em 10em;
+  font-size: 20px;
+  cursor: pointer;
+  font-family: var(--primary-font-family), sans-serif;
+  text-transform: capitalize;
 }
 
-.HomeContainer_right_button >input{
-    background-color: #000;
-    color: #fff;
-    outline: none;
-    border-radius: 4px;
-    border: none;
-    font-weight: 600;
-    padding: 0.4em 10em;
-    font-size: 20px;
-    cursor: pointer;
-    font-family: var(--primary-font-family),sans-serif;
-    text-transform: capitalize;
+.HomeContainer_right {
+  background-color: #fff;
+  min-height: 100vh;
+  width: 50%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.HomeContainer_right_Logo > img{
-    width: 200px;
-    height: 200px;
+.HomeContainer_right_button {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.HomeContainer_right_button > input {
+  background-color: #000;
+  color: #fff;
+  outline: none;
+  border-radius: 4px;
+  border: none;
+  font-weight: 600;
+  padding: 0.4em 10em;
+  font-size: 20px;
+  cursor: pointer;
+  font-family: var(--primary-font-family), sans-serif;
+  text-transform: capitalize;
+}
+.HomeContainer_right_Logo > img {
+  width: 200px;
+  height: 200px;
 }
 /*Film viewer*/
-.filmviewer{
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #000;
+.filmviewer {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
 }
-.filmviewer_footer{
-    background-color: #000;
-    height: 30vh;
-    width: 100%;
-    background: url(https://www.ifmacinema.com/_next/static/media/PosterCollage_Rotated_80_2000x1440.62622d5b624aab6ba1eaa503be40f42c.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.filmviewer_footer {
+  background-color: #000;
+  height: 30vh;
+  width: 100%;
+  background: url(https://www.ifmacinema.com/_next/static/media/PosterCollage_Rotated_80_2000x1440.62622d5b624aab6ba1eaa503be40f42c.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.AllVideos{
-    display: flex;
-    flex-flow: wrap;
-    justify-content: flex-start;
-    padding: 2%;
+.AllVideos {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: flex-start;
+  padding: 2%;
 }
-.video{
-    padding: 2%;
-    border: solid 2px;
+.video {
+  padding: 2%;
+  border: solid 2px;
 }
-.title{
-    display: flex;
-   
+.title {
+  display: flex;
 }
-.badge__label{
-    background-color: red;
-    padding: 1px 3px;
-    border-radius: 10px;
+.badge__label {
+  background-color: red;
+  padding: 1px 3px;
+  border-radius: 10px;
 }
-.registerButton{
-    background-color: red;
-    color: white;
+.registerButton,
+.Button {
+  background-color: red;
+  color: white;
 }
 
 /*Film maker */
-.filmmaker{
-    display: flex;
+.filmmaker {
+  display: flex;
 }
-.filmmaker_left{
-    color: #000;
-    background-color: #fff;
-    height: 100vh;
-    width: 50%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+.filmmaker_left {
+  color: #000;
+  background-color: #fff;
+  height: 100vh;
+  width: 50%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
-.filmmaker_right{
-    background-color: #000;
-    height: 100vh;
-    width: 50%;
-    /* position: relative;
+.filmmaker_right {
+  background-color: #000;
+  height: 100vh;
+  width: 50%;
+  /* position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center; */
 }
-.videoupload{
-    background-color: red;
-    color: #fff;
+.videoupload {
+  background-color: red;
+  color: #fff;
 }
-.ifmawelcome{
-    display: flex;
-    color: #fff;
-    
+.ifmawelcome {
+  display: flex;
+  color: #fff;
 }
-
-
-
-
-
-
-
-
-
-
+.linksContainer {
+  display: flex;
+}
+.links {
+  padding: 5%;
+  color: #fff !important;
+}
 
 .App {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 100vh; 
+  min-height: 100vh;
   padding: 1rem 0.5rem;
 }
 
 section {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    padding: 1rem;
-    background-color:#fff;
-    align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1rem;
+  background-color: #fff;
+  align-items: center;
 }
 
 form {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-   
-    padding-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  padding-bottom: 1rem;
 }
 
-a, a:visited {
-    color: #000;
+a,
+a:visited {
+  color: #000;
 }
 
 input[type="text"],
 input[type="password"],
 button,
 textarea {
-  font-family: 'Nunito', sans-serif;
+  font-family: "Nunito", sans-serif;
   font-size: 22px;
   padding: 0.25rem;
   border-radius: 0.5rem;
@@ -235,49 +229,49 @@ button {
 }
 
 .instructions {
-    font-size: 0.75rem;
-    border-radius: 0.5rem;
-    background: #000;
-    color: #fff;
-    padding: 0.25rem;
-    position: relative;
-    bottom: -10px;
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  bottom: -10px;
 }
 
 .instructions > svg {
-    margin-right: 0.25rem;
+  margin-right: 0.25rem;
 }
 
 .offscreen {
-    position: absolute;
-    left: -9999px;
+  position: absolute;
+  left: -9999px;
 }
 
 .hide {
-    display: none;
+  display: none;
 }
 
 .valid {
-    color: limegreen;
-    margin-left: 0.25rem;
+  color: limegreen;
+  margin-left: 0.25rem;
 }
 
 .invalid {
-    color: red;
-    margin-left: 0.25rem;
+  color: red;
+  margin-left: 0.25rem;
 }
 
 .errmsg {
-    background-color: lightpink;
-    color: firebrick;
-    font-weight: bold;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .line {
-    display: inline-block;
+  display: inline-block;
 }
-.registerName{
-    color:#000
+.registerName {
+  color: #000;
 }
