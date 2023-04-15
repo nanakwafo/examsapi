@@ -7,7 +7,7 @@ const router = express.Router();
 //Category
 
 router.post('/create',categoryController.create)
-router.get('/:userId',categoryController.allcategory)
+router.get('/',categoryController.allcategory)
 router.put('/:id',categoryController.updatecategory)
 
 module.exports = router
