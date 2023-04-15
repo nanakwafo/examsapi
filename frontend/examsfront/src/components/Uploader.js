@@ -24,13 +24,16 @@ const Uploader = () => {
   const [title, setTitle] = useState(null);
   const [category, setCategory] = useState(null);
   const [uservideos, setUserVideos] = useState([]);
+
   const fetchvideos = async () => {
     let headersList = {
       Authorization: `Basic ${sessionStorage.getItem("token")}`,
     };
 
     let reqOptions = {
-      url: `${process.env.REACT_APP_API_URL}/videos/${sessionStorage.getItem("id")}`,
+      url: `${process.env.REACT_APP_API_URL}/videos/${sessionStorage.getItem(
+        "id"
+      )}`,
       method: "GET",
       headers: headersList,
     };
@@ -44,6 +47,7 @@ const Uploader = () => {
       }
     }
   };
+
   function Logout() {
     sessionStorage.clear();
     window.location.href = "/login";
@@ -51,7 +55,10 @@ const Uploader = () => {
 
   useEffect(() => {
     fetchvideos();
+   
   });
+  
+  
   function getTitle(e) {
     setTitle(e.target.value);
   }
@@ -67,15 +74,14 @@ const Uploader = () => {
         console.log(data);
         console.log(data.key); //name
         console.log(title); //get title
-        console.log(category); //get title
-
+        console.log(category)
         let headersList = {
           Authorization: `Basic ${sessionStorage.getItem("token")}`,
           "Content-Type": "application/json",
         };
 
         let bodyContent = JSON.stringify({
-          categoryId: category,
+          categoryId: '6435414bade0d675d1b7e027',
           userId: sessionStorage.getItem("id"),
           name: data.key,
           title: title,
@@ -109,9 +115,22 @@ const Uploader = () => {
   return (
     <div className="filmmaker">
       <div className="filmmaker_left">
-        <div>Category:</div>
-        <input type="text" onChange={getCategory} />
-
+        
+        <div>
+          <label>
+            Category
+            <select onChange={getCategory}>
+              
+                <option  value="Movies">
+                  Movies
+                </option>
+                <option  value="Movies">
+                  Series
+                </option>
+             
+            </select>
+          </label>
+        </div>
         <br />
         <br />
         <br />
