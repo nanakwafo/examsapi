@@ -5,11 +5,7 @@ const { Schema } = mongoose;
 
 
 const categorySchema = new Schema({
-    userId:{
-        type: String,
-        required: true,
-       },
-       
+  
    name:{
       type: String,
       required: true,

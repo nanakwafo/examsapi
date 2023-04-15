@@ -15,6 +15,11 @@ const Register = () => {
   const userRef = useRef();
   const errRef = useRef();
 
+  const [firstname,setFirstname]= useState("");
+  const [lastname,setLastname]= useState("");
+  const [country,setCountry]= useState("");
+  const [email,setEmail]= useState("");
+
   const [user, setUser] = useState("");
   const [validName, setValidName] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
@@ -62,13 +67,13 @@ const Register = () => {
       };
 
       let bodyContent = JSON.stringify({
-        firstname: "nana3",
-        lastname: "mensah3",
-        country: "Ghana3",
-        company: "IFMAP3",
-        username: "nana3",
-        password: "12343",
-        email: "nanamensah11330@gmail.com",
+        firstname: firstname,
+        lastname: lastname,
+        country: country,
+        company: country,
+        username: user,
+        password: pwd,
+        email: email,
       });
 
       let reqOptions = {
@@ -126,6 +131,50 @@ const Register = () => {
           </p>
           <h1 className="registerName">Register</h1>
           <form onSubmit={handleSubmit}>
+
+
+
+          <label htmlFor="firstname"> Firstname:<FontAwesomeIcon icon={faCheck}className={validName ? "valid" : "hide"}/>
+              <FontAwesomeIcon icon={faTimes}className={validName || !firstname ? "hide" : "invalid"}/>
+            </label>
+            <input type="text"id="firstname" autoComplete="off"onChange={(e) => setFirstname(e.target.value)} value={firstname}
+              required aria-invalid={validName ? "false" : "true"}aria-describedby="uidnote"/>
+
+
+<label htmlFor="lastname"> Lastname:<FontAwesomeIcon icon={faCheck}className={validName ? "valid" : "hide"}/>
+              <FontAwesomeIcon icon={faTimes}className={validName || !lastname ? "hide" : "invalid"}/>
+            </label>
+            <input type="text"id="lastname" autoComplete="off"onChange={(e) => setLastname(e.target.value)} value={lastname}
+              required aria-invalid={validName ? "false" : "true"}aria-describedby="uidnote"/>
+
+
+
+<label htmlFor="country"> Country:<FontAwesomeIcon icon={faCheck}className={validName ? "valid" : "hide"}/>
+              <FontAwesomeIcon icon={faTimes}className={validName || !country ? "hide" : "invalid"}/>
+            </label>
+            <input type="text"id="country" autoComplete="off"onChange={(e) => setCountry(e.target.value)} value={country}
+              required aria-invalid={validName ? "false" : "true"}aria-describedby="uidnote"/>
+
+<label htmlFor="email"> Email:<FontAwesomeIcon icon={faCheck}className={validName ? "valid" : "hide"}/>
+              <FontAwesomeIcon icon={faTimes}className={validName || !email ? "hide" : "invalid"}/>
+            </label>
+            <input type="text"id="email" autoComplete="off"onChange={(e) => setEmail(e.target.value)} value={email}
+              required aria-invalid={validName ? "false" : "true"}aria-describedby="uidnote"/>
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <label htmlFor="username">
               Username:
               <FontAwesomeIcon
@@ -137,19 +186,8 @@ const Register = () => {
                 className={validName || !user ? "hide" : "invalid"}
               />
             </label>
-            <input
-              type="text"
-              id="username"
-              ref={userRef}
-              autoComplete="off"
-              onChange={(e) => setUser(e.target.value)}
-              value={user}
-              required
-              aria-invalid={validName ? "false" : "true"}
-              aria-describedby="uidnote"
-              onFocus={() => setUserFocus(true)}
-              onBlur={() => setUserFocus(false)}
-            />
+            <input type="text"id="username"ref={userRef}autoComplete="off"onChange={(e) => setUser(e.target.value)}value={user}
+              required aria-invalid={validName ? "false" : "true"}aria-describedby="uidnote"onFocus={() => setUserFocus(true)} onBlur={() => setUserFocus(false)}/>
             <p
               id="uidnote"
               className={
