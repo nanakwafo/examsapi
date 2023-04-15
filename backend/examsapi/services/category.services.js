@@ -12,7 +12,7 @@ async function create(params, callback) {
 }
 
 async  function allcategory(req,callback){
-  Category.find({userId:req.params.userId}).then((response) => {
+  Category.find().then((response) => {
     return callback(null, response);
   }).catch((error) => {
     return callback(error);
